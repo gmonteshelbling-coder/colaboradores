@@ -22,52 +22,15 @@ const ESCUDO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrF
    API_URL → dirección del Apps Script (termina en /exec).
              Vacío = modo prueba, guarda solo en este celular.
 
-   Para agregar un partido nuevo, copiá un bloque de EVENTOS
-   y cambiale el id, el rival y los horarios.
-   tipo: "tira" (formativas) o "individual" (Primera).
+   Los partidos se cargan desde la app: botón Administración,
+   abajo de todo en la pantalla de inicio.
    ══════════════════════════════════════════════════════════ */
 const CONFIG = {
   API_URL: "https://script.google.com/macros/s/AKfycbxMZEu5FjjSAmnrCYOwLJFoFIOfwbG4g3K4a64e5a32kz-TPSzm2E5pFfaDcdr4P40D/exec",
 
-  EVENTOS: [
-    {
-      id: "f8-rivadavia",
-      tipo: "tira",
-      rival: "Rivadavia",
-      torneo: "Fecha 8 · Torneo Oficial",
-      division: "AMB Masculino",
-      fecha: "Sábado 22 de agosto",
-      sede: "Estadio Duggan Martignoni",
-      partidos: [
-        { id:"U11", cat:"U11", bola:"11.30", tramos:[
-          { desde:"11:00", hasta:"12:00" },
-          { desde:"12:00", hasta:"13:00" } ] },
-        { id:"U13", cat:"U13", bola:"13.00", tramos:[
-          { desde:"13:00", hasta:"13:50" },
-          { desde:"13:50", hasta:"14:45" } ] },
-        { id:"U15", cat:"U15", bola:"14.45", tramos:[
-          { desde:"14:45", hasta:"15:35" },
-          { desde:"15:35", hasta:"16:30" } ] },
-        { id:"U17", cat:"U17", bola:"16.30", tramos:[
-          { desde:"16:30", hasta:"17:20" },
-          { desde:"17:20", hasta:"18:15" } ] }
-      ]
-    },
-    {
-      id: "ejemplo-primera",
-      tipo: "individual",
-      rival: "Editar rival",
-      torneo: "Ejemplo · editá o borrá este bloque",
-      division: "Primera División",
-      fecha: "Editar fecha",
-      sede: "Estadio Duggan Martignoni",
-      partidos: [
-        { id:"P1", cat:"Primera", bola:"21.00", tramos:[
-          { desde:"19:45", hasta:"20:45" },
-          { desde:"20:45", hasta:"21:45" } ] }
-      ]
-    }
-  ],
+  /* Los partidos ya no se escriben acá: se cargan desde la propia app,
+     en Administración, y quedan guardados en la planilla. */
+  EVENTOS: [],
 
   PUESTOS_MESA: [
     { id:"reloj",  nombre:"Reloj general",     detalle:"Tiempo de juego y bocina" },
@@ -455,6 +418,79 @@ button{font-family:inherit;color:inherit}
 .pie b{color:var(--gris)}
 .cargando{padding:70px 20px;text-align:center;color:var(--gris-osc);font-size:14px}
 
+
+/* ════════════════ ADMINISTRACIÓN ════════════════ */
+.p-admin{
+  position:relative;z-index:2;background:none;border:0;
+  padding:8px 16px;margin-top:2px;cursor:pointer;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#3A3731;
+}
+.p-admin:active{color:var(--gris)}
+
+.caja{
+  background:var(--carbon);border:1px solid var(--linea);
+  border-radius:8px;padding:18px 16px;margin:0 14px 14px;
+}
+.caja h3{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:20px;text-transform:uppercase;letter-spacing:.05em;
+  margin:0 0 4px;
+}
+.caja .nota{font-size:12px;color:var(--gris);margin:0 0 16px;line-height:1.5}
+
+.campo{margin-bottom:14px}
+.campo:last-child{margin-bottom:0}
+.hint{font-size:11px;color:var(--gris-osc);margin:-10px 0 14px;line-height:1.4}
+
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.seg button{
+  padding:13px 8px;border-radius:4px;cursor:pointer;
+  background:var(--carbon-2);border:1.5px solid var(--carbon-3);
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:16px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris);transition:all .14s ease;
+}
+.seg button.sel{background:var(--rojo);border-color:var(--rojo);color:#fff}
+
+.pfila{
+  display:flex;gap:8px;align-items:flex-end;margin-bottom:9px;
+}
+.pfila .c1{flex:1.6;min-width:0}
+.pfila .c2{flex:1;min-width:0}
+.pfila input{margin-bottom:0}
+.pfila .quitar{
+  flex:0 0 auto;background:none;border:1.5px solid var(--carbon-3);
+  border-radius:4px;width:44px;height:47px;cursor:pointer;
+  color:var(--gris-osc);font-size:19px;line-height:1;
+}
+.pfila .quitar:active{border-color:var(--rojo);color:var(--rojo-vivo)}
+
+.btn-linea{
+  width:100%;padding:12px;margin-top:4px;cursor:pointer;
+  background:transparent;border:1.5px dashed var(--carbon-3);border-radius:4px;
+  color:var(--gris);font-size:13.5px;font-weight:500;
+}
+.btn-linea:active{border-color:var(--rojo);color:var(--rojo-vivo)}
+
+.ficha{
+  background:var(--carbon);border:1px solid var(--linea);
+  border-left:3px solid var(--rojo);border-radius:5px;
+  padding:13px 15px;margin-bottom:9px;
+  display:flex;align-items:center;gap:12px;
+}
+.ficha .txt{flex:1;min-width:0}
+.ficha .r{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:20px;line-height:1;text-transform:uppercase;display:block;
+}
+.ficha .d{font-size:11.5px;color:var(--gris);display:block;margin-top:4px}
+.ficha .acc{display:flex;gap:6px;flex:0 0 auto}
+.ficha .acc button{
+  background:none;border:1px solid var(--carbon-3);border-radius:4px;
+  padding:8px 10px;cursor:pointer;color:var(--gris);font-size:11.5px;
+}
+.ficha .acc button:active{border-color:var(--rojo);color:var(--rojo-vivo)}
+
 /* ════════ Hoja de anotación ════════ */
 .velo{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:flex-end;z-index:60;backdrop-filter:blur(3px)}
 .velo.on{display:flex}
@@ -517,6 +553,7 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
     <button class="p-entrar" id="btn-entrar">Entrar</button>
   </div>
   <p class="p-pie">Subcomisión de Básquet</p>
+  <button class="p-admin" id="btn-admin">Administración</button>
 </section>
 
 <!-- ═══════════ 2 · DOS ACCESOS ═══════════ -->
@@ -552,7 +589,7 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
     <p class="cab-sub">Cada tarjeta muestra cuántos puestos están cubiertos.</p>
   </div>
   <div class="tarjetas" id="lista-eventos"></div>
-  <p class="pie">Para agregar un partido nuevo se edita la lista <b>EVENTOS</b> dentro del archivo.</p>
+  <p class="pie">Los partidos se cargan desde <b>Administraci&oacute;n</b>,<br>en la pantalla de inicio.</p>
 </section>
 
 <!-- ═══════════ 3 · MENÚ ═══════════ -->
@@ -599,6 +636,115 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
   <p class="pie" id="area-pie"></p>
 </section>
 
+<!-- ═══════════ ADMIN · Ingreso ═══════════ -->
+<section class="vista" id="v-admin">
+  <div class="barra-sup">
+    <button class="volver" data-atras>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Inicio
+    </button>
+    <img class="barra-esc" id="esc-b4" alt="">
+  </div>
+  <div class="cabecera">
+    <p class="cab-eyebrow">Sólo dirigentes</p>
+    <h2 class="cab-tit">Administración</h2>
+    <p class="cab-sub">Para cargar los partidos de la fecha.</p>
+  </div>
+  <div class="caja">
+    <label for="a-clave">Clave</label>
+    <input id="a-clave" type="password" autocomplete="off" placeholder="••••••••">
+    <p class="error" id="a-error" style="display:none"></p>
+    <button class="btn-ok" id="a-entrar">Ingresar</button>
+  </div>
+</section>
+
+<!-- ═══════════ ADMIN · Panel ═══════════ -->
+<section class="vista" id="v-panel">
+  <div class="barra-sup">
+    <button class="volver" data-atras>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Inicio
+    </button>
+    <span class="barra-tit">Administración</span>
+    <img class="barra-esc" id="esc-b5" alt="">
+  </div>
+  <div class="cabecera">
+    <p class="cab-eyebrow">Partidos cargados</p>
+    <h2 class="cab-tit">Cartelera</h2>
+    <p class="cab-sub">Lo que cargues acá aparece en las tarjetas de la app.</p>
+  </div>
+  <div class="tarjetas" id="lista-fichas"></div>
+  <div style="padding:0 14px">
+    <button class="btn-ok" id="p-nuevo">Cargar un partido</button>
+  </div>
+  <p class="pie">Al borrar un partido se borran tambi&eacute;n<br>las anotaciones de ese partido.</p>
+</section>
+
+<!-- ═══════════ ADMIN · Formulario ═══════════ -->
+<section class="vista" id="v-form">
+  <div class="barra-sup">
+    <button class="volver" data-atras>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Cartelera
+    </button>
+    <img class="barra-esc" id="esc-b6" alt="">
+  </div>
+  <div class="cabecera">
+    <p class="cab-eyebrow" id="f-modo">Partido nuevo</p>
+    <h2 class="cab-tit">Datos del<br>partido</h2>
+  </div>
+
+  <div class="caja">
+    <label>Tipo</label>
+    <div class="seg" id="f-tipo">
+      <button data-tipo="individual">Primera</button>
+      <button data-tipo="tira" class="sel">Formativas</button>
+    </div>
+
+    <div class="campo">
+      <label for="f-division">Divisi&oacute;n o categor&iacute;a general</label>
+      <input id="f-division" type="text" placeholder="AMB Masculino">
+    </div>
+
+    <div class="campo">
+      <label for="f-rival">Rival</label>
+      <input id="f-rival" type="text" placeholder="Rivadavia">
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="f-fecha">Fecha</label>
+        <input id="f-fecha" type="date">
+      </div>
+      <div class="campo">
+        <label for="f-torneo">Torneo</label>
+        <input id="f-torneo" type="text" placeholder="Fecha 8 · Oficial">
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="f-sede">Sede</label>
+      <input id="f-sede" type="text" placeholder="Estadio Duggan Martignoni">
+    </div>
+  </div>
+
+  <div class="caja">
+    <h3>Partidos de la jornada</h3>
+    <p class="nota">Pon&eacute; la categor&iacute;a y la hora en que empieza cada uno.
+      Los turnos de porter&iacute;a se calculan solos: se abre media hora antes del primero
+      y cada partido se parte en dos mitades.</p>
+    <div id="f-partidos"></div>
+    <button class="btn-linea" id="f-agregar">+ Agregar otro partido</button>
+  </div>
+
+  <div style="padding:0 14px">
+    <p class="error" id="f-msg" style="display:none"></p>
+    <button class="btn-ok" id="f-guardar">Guardar partido</button>
+    <button class="btn-no" data-atras>Cancelar</button>
+  </div>
+  <p class="pie">&nbsp;</p>
+</section>
+
 <!-- ═══════════ Hoja de anotación ═══════════ -->
 <div class="velo" id="velo">
   <div class="hoja" role="dialog" aria-modal="true" aria-labelledby="hoja-titulo">
@@ -625,6 +771,12 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
   </div>
 </div>
 
+<datalist id="lista-cats">
+  <option value="Mini"><option value="U11"><option value="U13">
+  <option value="U15"><option value="U17"><option value="U21">
+  <option value="Primera">
+</datalist>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -638,7 +790,7 @@ const DEMO = !CONFIG.API_URL;
 const CLAVE_LOCAL = "colaboradores_demo_v1";
 
 /* ════════ Escudo ════════ */
-["esc-hero","esc-b0","esc-b1","esc-b2","esc-b3"].forEach(id => {
+["esc-hero","esc-b0","esc-b1","esc-b2","esc-b3","esc-b4","esc-b5","esc-b6"].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.src = ESCUDO;
 });
@@ -695,6 +847,7 @@ function ir(v, push){
 document.querySelectorAll("[data-atras]").forEach(b => b.onclick = () => history.back());
 
 function repintar(v){
+  if (v === "panel")   pintarPanel();
   if (v === "tipo")    pintarTipos();
   if (v === "eventos") pintarEventos();
   if (v === "menu")    pintarMenu();
@@ -753,6 +906,7 @@ async function cargar(){
   try{
     const j = await pedir({ accion:"leer" });
     datos = j.datos || {};
+    if (Array.isArray(j.eventos)) CONFIG.EVENTOS = j.eventos;
     return true;
   }catch(e){ return false; }
 }
@@ -1107,6 +1261,254 @@ document.addEventListener("visibilitychange", async () => {
   await cargar();
   repintar(vista);
 });
+
+
+/* ══════════════════════════════════════════════════════
+   ADMINISTRACIÓN
+   ══════════════════════════════════════════════════════ */
+let claveAdmin = "";
+let editandoId = null;
+
+const MESES = ["enero","febrero","marzo","abril","mayo","junio",
+               "julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+
+function fechaLinda(iso){
+  if (!iso) return "";
+  const p = iso.split("-");
+  if (p.length !== 3) return iso;
+  const d = new Date(+p[0], +p[1] - 1, +p[2]);
+  const nom = DIAS[d.getDay()];
+  return nom.charAt(0).toUpperCase() + nom.slice(1) + " " + d.getDate() + " de " + MESES[d.getMonth()];
+}
+
+/* ── Horarios: minutos ↔ texto ── */
+function aMin(hhmm){
+  const p = String(hhmm).split(":");
+  return (+p[0]) * 60 + (+p[1] || 0);
+}
+function aHora(min){
+  min = ((Math.round(min / 5) * 5) % 1440 + 1440) % 1440;
+  const h = Math.floor(min / 60), m = min % 60;
+  return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m;
+}
+
+/**
+ * Arma los partidos con sus dos tramos de portería.
+ * Se abre 30 minutos antes del primero; cada partido se cubre
+ * hasta que empieza el siguiente (el último, 105 minutos).
+ */
+function armarPartidos(crudos){
+  const orden = crudos
+    .filter(p => p.cat && p.hora)
+    .sort((a, b) => aMin(a.hora) - aMin(b.hora));
+
+  return orden.map((p, i) => {
+    const arranque = (i === 0) ? aMin(p.hora) - 30 : aMin(p.hora);
+    const final = (i < orden.length - 1) ? aMin(orden[i + 1].hora) : aMin(p.hora) + 105;
+    const medio = arranque + Math.round((final - arranque) / 2 / 5) * 5;
+    return {
+      id: "P" + (i + 1),
+      cat: p.cat.trim(),
+      bola: p.hora.replace(":", "."),
+      tramos: [
+        { desde: aHora(arranque), hasta: aHora(medio) },
+        { desde: aHora(medio),    hasta: aHora(final) }
+      ]
+    };
+  });
+}
+
+/* ── Ingreso ── */
+document.getElementById("btn-admin").onclick = () => {
+  document.getElementById("a-error").style.display = "none";
+  document.getElementById("a-clave").value = "";
+  ir("admin");
+  setTimeout(() => document.getElementById("a-clave").focus(), 260);
+};
+
+document.getElementById("a-entrar").onclick = async function(){
+  const cl = document.getElementById("a-clave").value.trim();
+  const err = document.getElementById("a-error");
+  if (!cl){ err.textContent = "Escribí la clave."; err.style.display = "block"; return; }
+
+  this.disabled = true; this.textContent = "Verificando…";
+  try{
+    const j = await pedir({ accion:"admin", clave:cl });
+    if (!j.ok){
+      err.textContent = j.mensaje || "Clave incorrecta.";
+      err.style.display = "block";
+    } else {
+      claveAdmin = cl;
+      if (Array.isArray(j.eventos)) CONFIG.EVENTOS = j.eventos;
+      pintarPanel(); ir("panel");
+    }
+  }catch(e){
+    err.textContent = (e && e.message) || "No se pudo verificar.";
+    err.style.display = "block";
+  }
+  this.disabled = false; this.textContent = "Ingresar";
+};
+
+document.getElementById("a-clave").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("a-entrar").click();
+});
+
+/* ── Panel ── */
+function pintarPanel(){
+  const cont = document.getElementById("lista-fichas");
+  cont.innerHTML = "";
+
+  if (!CONFIG.EVENTOS.length){
+    cont.innerHTML = '<div class="aviso">Todavía no hay partidos cargados. ' +
+      'Usá el botón de abajo para cargar el primero.</div>';
+    return;
+  }
+
+  CONFIG.EVENTOS.forEach(ev => {
+    const d = document.createElement("div");
+    d.className = "ficha";
+    d.innerHTML =
+      '<span class="txt">' +
+        '<span class="r">vs ' + esc(ev.rival) + '</span>' +
+        '<span class="d">' + esc(ev.fecha) + ' · ' +
+          (ev.tipo === "individual" ? "Primera" : "Formativas") + ' · ' +
+          ev.partidos.length + (ev.partidos.length === 1 ? " partido" : " partidos") +
+        '</span>' +
+      '</span>' +
+      '<span class="acc">' +
+        '<button data-editar="' + ev.id + '">Editar</button>' +
+        '<button data-borrar="' + ev.id + '">Borrar</button>' +
+      '</span>';
+    cont.appendChild(d);
+  });
+
+  cont.querySelectorAll("[data-editar]").forEach(b =>
+    b.onclick = () => abrirForm(b.dataset.editar));
+  cont.querySelectorAll("[data-borrar]").forEach(b =>
+    b.onclick = () => borrarEvento(b.dataset.borrar));
+}
+
+document.getElementById("p-nuevo").onclick = () => abrirForm(null);
+
+async function borrarEvento(id){
+  const ev = CONFIG.EVENTOS.find(x => x.id === id);
+  if (!ev) return;
+  if (!confirm("¿Borrar el partido contra " + ev.rival + " y todas sus anotaciones?")) return;
+  try{
+    const j = await pedir({ accion:"borrarPartido", clave:claveAdmin, id:id });
+    if (!j.ok){ avisar(j.mensaje || "No se pudo borrar."); return; }
+    if (Array.isArray(j.eventos)) CONFIG.EVENTOS = j.eventos;
+    if (j.datos) datos = j.datos;
+    pintarPanel(); avisar("Partido borrado.");
+  }catch(e){ avisar((e && e.message) || "No se pudo borrar."); }
+}
+
+/* ── Formulario ── */
+function filaPartido(cat, hora){
+  const d = document.createElement("div");
+  d.className = "pfila";
+  d.innerHTML =
+    '<div class="c1"><input type="text" class="in-cat" placeholder="U13" value="' +
+      (cat ? esc(cat) : "") + '" list="lista-cats"></div>' +
+    '<div class="c2"><input type="time" class="in-hora" value="' + (hora || "") + '"></div>' +
+    '<button class="quitar" title="Quitar">×</button>';
+  d.querySelector(".quitar").onclick = () => {
+    const cont = document.getElementById("f-partidos");
+    if (cont.children.length > 1) d.remove();
+  };
+  return d;
+}
+
+function abrirForm(id){
+  editandoId = id || null;
+  const ev = id ? CONFIG.EVENTOS.find(x => x.id === id) : null;
+
+  document.getElementById("f-modo").textContent = ev ? "Editando partido" : "Partido nuevo";
+  document.getElementById("f-division").value = ev ? ev.division : "";
+  document.getElementById("f-rival").value    = ev ? ev.rival : "";
+  document.getElementById("f-torneo").value   = ev ? ev.torneo : "";
+  document.getElementById("f-sede").value     = ev ? ev.sede : "Estadio Duggan Martignoni";
+  document.getElementById("f-fecha").value    = ev ? (ev.fechaIso || "") : "";
+  document.getElementById("f-msg").style.display = "none";
+
+  const tipo = ev ? ev.tipo : "tira";
+  document.querySelectorAll("#f-tipo button").forEach(b =>
+    b.classList.toggle("sel", b.dataset.tipo === tipo));
+
+  const cont = document.getElementById("f-partidos");
+  cont.innerHTML = "";
+  if (ev && ev.partidos.length){
+    ev.partidos.forEach(p => cont.appendChild(filaPartido(p.cat, String(p.bola).replace(".", ":"))));
+  } else if (tipo === "individual"){
+    cont.appendChild(filaPartido("Primera", ""));
+  } else {
+    ["U11","U13","U15","U17"].forEach(c => cont.appendChild(filaPartido(c, "")));
+  }
+  ir("form");
+}
+
+document.querySelectorAll("#f-tipo button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("#f-tipo button").forEach(x => x.classList.remove("sel"));
+  b.classList.add("sel");
+  const cont = document.getElementById("f-partidos");
+  const vacio = Array.from(cont.querySelectorAll(".in-hora")).every(i => !i.value);
+  if (vacio){
+    cont.innerHTML = "";
+    if (b.dataset.tipo === "individual") cont.appendChild(filaPartido("Primera", ""));
+    else ["U11","U13","U15","U17"].forEach(c => cont.appendChild(filaPartido(c, "")));
+  }
+});
+
+document.getElementById("f-agregar").onclick = () =>
+  document.getElementById("f-partidos").appendChild(filaPartido("", ""));
+
+document.getElementById("f-guardar").onclick = async function(){
+  const msg = document.getElementById("f-msg");
+  const rival = document.getElementById("f-rival").value.trim();
+  const iso = document.getElementById("f-fecha").value;
+  const tipo = document.querySelector("#f-tipo button.sel").dataset.tipo;
+
+  const crudos = Array.from(document.querySelectorAll("#f-partidos .pfila")).map(f => ({
+    cat: f.querySelector(".in-cat").value.trim(),
+    hora: f.querySelector(".in-hora").value
+  }));
+  const partidos = armarPartidos(crudos);
+
+  const fallar = t => { msg.textContent = t; msg.style.display = "block"; };
+  if (!rival)          return fallar("Falta el rival.");
+  if (!iso)            return fallar("Falta la fecha.");
+  if (!partidos.length) return fallar("Cargá al menos un partido con categoría y hora.");
+  msg.style.display = "none";
+
+  const ev = {
+    id: editandoId || "",
+    tipo: tipo,
+    division: document.getElementById("f-division").value.trim() ||
+              (tipo === "individual" ? "Primera División" : "Formativas"),
+    rival: rival,
+    torneo: document.getElementById("f-torneo").value.trim(),
+    fecha: fechaLinda(iso),
+    fechaIso: iso,
+    sede: document.getElementById("f-sede").value.trim(),
+    partidos: partidos
+  };
+
+  this.disabled = true; this.textContent = "Guardando…";
+  try{
+    const j = await pedir({
+      accion:"guardarPartido", clave:claveAdmin, evento: JSON.stringify(ev)
+    });
+    if (!j.ok){ fallar(j.mensaje || "No se pudo guardar."); }
+    else {
+      if (Array.isArray(j.eventos)) CONFIG.EVENTOS = j.eventos;
+      pintarPanel();
+      history.back();
+      avisar(editandoId ? "Partido actualizado." : "Partido cargado.");
+    }
+  }catch(e){ fallar((e && e.message) || "No se pudo guardar."); }
+  this.disabled = false; this.textContent = "Guardar partido";
+};
 
 history.replaceState({ v:"portada" }, "");
 </script>

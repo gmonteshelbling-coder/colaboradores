@@ -666,14 +666,22 @@ document.getElementById("btn-entrar").onclick = async () => {
 };
 
 /* ════════ Datos ════════ */
+/* Todo va por GET: el POST hacia Apps Script se traba en algunos
+   navegadores de celular por el redirect interno de Google. */
+async function pedir(params){
+  params.t = Date.now();
+  const q = new URLSearchParams(params).toString();
+  const r = await fetch(CONFIG.API_URL + "?" + q, { method:"GET" });
+  return await r.json();
+}
+
 async function cargar(){
   if (DEMO){
     try { datos = JSON.parse(localStorage.getItem(CLAVE_LOCAL) || "{}"); } catch(e){ datos = {}; }
     return true;
   }
   try{
-    const r = await fetch(CONFIG.API_URL + "?accion=leer&t=" + Date.now());
-    const j = await r.json();
+    const j = await pedir({ accion:"leer" });
     datos = j.datos || {};
     return true;
   }catch(e){ return false; }
@@ -918,20 +926,15 @@ document.getElementById("f-ok").onclick = async function(){
   }
 
   try{
-    const r = await fetch(CONFIG.API_URL, {
-      method:"POST",
-      headers:{ "Content-Type":"text/plain;charset=utf-8" },
-      body: JSON.stringify({
-        accion:"anotar", clave:k,
-        evento: evento.rival + " · " + evento.fecha,
-        area: area === "porteria" ? "Portería" : "Mesa de control",
-        partido: objetivo.cat,
-        puesto: objetivo.etiqueta,
-        cuando: objetivo.cuando,
-        nombre, categoria:cat, telefono:tel
-      })
+    const j = await pedir({
+      accion:"anotar", clave:k,
+      evento: evento.rival + " · " + evento.fecha,
+      area: area === "porteria" ? "Portería" : "Mesa de control",
+      partido: objetivo.cat,
+      puesto: objetivo.etiqueta,
+      cuando: objetivo.cuando,
+      nombre: nombre, categoria: cat, telefono: tel
     });
-    const j = await r.json();
     if (!j.ok){
       err.textContent = j.mensaje || "Ese puesto lo tomaron recién. Elegí otro.";
       err.style.display = "block";
@@ -957,12 +960,7 @@ async function soltar(partidoId, puesto){
     delete datos[k]; guardarLocal(); pintarArea(); avisar("Lugar liberado."); return;
   }
   try{
-    const r = await fetch(CONFIG.API_URL, {
-      method:"POST",
-      headers:{ "Content-Type":"text/plain;charset=utf-8" },
-      body: JSON.stringify({ accion:"soltar", clave:k })
-    });
-    const j = await r.json();
+    const j = await pedir({ accion:"soltar", clave:k });
     datos = j.datos || datos;
     pintarArea(); avisar("Lugar liberado.");
   }catch(e){ avisar("No se pudo liberar. Probá de nuevo."); }

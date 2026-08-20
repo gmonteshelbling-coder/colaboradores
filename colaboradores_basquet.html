@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Colaboradores · Básquet Independiente de Tandil</title>
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Colaboradores">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+const ESCUDO = "data:image/png;base64,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";
+
+/* ══════════════════════════════════════════════════════════
+   CONFIGURACIÓN
+
+   API_URL → dirección del Apps Script (termina en /exec).
+             Vacío = modo prueba, guarda solo en este celular.
+
+   Para agregar un partido nuevo, copiá un bloque de EVENTOS
+   y cambiale el id, el rival y los horarios.
+   tipo: "tira" (formativas) o "individual" (Primera).
+   ══════════════════════════════════════════════════════════ */
+const CONFIG = {
+  API_URL: "https://script.google.com/macros/s/AKfycbxMZEu5FjjSAmnrCYOwLJFoFIOfwbG4g3K4a64e5a32kz-TPSzm2E5pFfaDcdr4P40D/exec",
+
+  EVENTOS: [
+    {
+      id: "f8-rivadavia",
+      tipo: "tira",
+      rival: "Rivadavia",
+      torneo: "Fecha 8 · Torneo Oficial",
+      division: "AMB Masculino",
+      fecha: "Sábado 22 de agosto",
+      sede: "Estadio Duggan Martignoni",
+      partidos: [
+        { id:"U11", cat:"U11", bola:"11.30", tramos:[
+          { desde:"11:00", hasta:"12:00" },
+          { desde:"12:00", hasta:"13:00" } ] },
+        { id:"U13", cat:"U13", bola:"13.00", tramos:[
+          { desde:"13:00", hasta:"13:50" },
+          { desde:"13:50", hasta:"14:45" } ] },
+        { id:"U15", cat:"U15", bola:"14.45", tramos:[
+          { desde:"14:45", hasta:"15:35" },
+          { desde:"15:35", hasta:"16:30" } ] },
+        { id:"U17", cat:"U17", bola:"16.30", tramos:[
+          { desde:"16:30", hasta:"17:20" },
+          { desde:"17:20", hasta:"18:15" } ] }
+      ]
+    },
+    {
+      id: "ejemplo-primera",
+      tipo: "individual",
+      rival: "Editar rival",
+      torneo: "Ejemplo · editá o borrá este bloque",
+      division: "Primera División",
+      fecha: "Editar fecha",
+      sede: "Estadio Duggan Martignoni",
+      partidos: [
+        { id:"P1", cat:"Primera", bola:"21.00", tramos:[
+          { desde:"19:45", hasta:"20:45" },
+          { desde:"20:45", hasta:"21:45" } ] }
+      ]
+    }
+  ],
+
+  PUESTOS_MESA: [
+    { id:"reloj",  nombre:"Reloj general",     detalle:"Tiempo de juego y bocina" },
+    { id:"24",     nombre:"Reloj de 24",       detalle:"Posesión" },
+    { id:"tablet", nombre:"Tablet",            detalle:"Planilla electrónica" }
+  ],
+
+  CATEGORIAS: ["Mini","U11","U13","U15","U17","U21","Primera","Dirigente","Otra"]
+};
+</script>
+<style>
+:root{
+  /* Portada */
+  --negro:#0B0B0C;
+
+  /* Sistema */
+  --humo:#F4F3F1;
+  --blanco:#FFFFFF;
+  --tinta:#161618;
+  --tinta-2:#2C2C30;
+  --gris-borde:#DDDCD8;
+  --gris-suave:#EDECE9;
+  --gris-txt:#75736D;
+  --gris-tenue:#A3A099;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--humo);color:var(--tinta);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.45;overflow-x:hidden;min-height:100dvh;
+}
+button{font-family:inherit}
+.vista{display:none}
+.vista.on{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ════════ Barra superior ════════ */
+.barra-sup{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;background:var(--blanco);
+  border-bottom:1px solid var(--gris-borde);
+  position:sticky;top:0;z-index:20;
+}
+.volver{
+  background:none;border:0;padding:6px 8px 6px 0;cursor:pointer;
+  color:var(--tinta);display:flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:500;
+}
+.volver svg{width:16px;height:16px}
+.barra-tit{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:15px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--gris-tenue);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.barra-esc{width:32px;height:32px;object-fit:contain;margin-left:auto}
+
+/* ════════════════ 1 · PORTADA ════════════════ */
+#v-portada{
+  min-height:100dvh;display:none;flex-direction:column;
+  background:var(--negro);color:#fff;position:relative;overflow:hidden;
+}
+#v-portada.on{display:flex}
+.rayado{
+  position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(-58deg,
+    transparent 0 28px, rgba(255,255,255,.028) 28px 50px);
+}
+.portada{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 26px;position:relative;z-index:1;
+}
+.portada::before{
+  content:"";position:absolute;top:12%;left:50%;transform:translateX(-50%);
+  width:min(420px,116vw);height:min(420px,116vw);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.085),transparent 64%);
+  pointer-events:none;
+}
+.escudo-hero{
+  width:min(178px,46vw);height:auto;position:relative;
+  filter:drop-shadow(0 16px 38px rgba(0,0,0,.8));
+  animation:aparece .8s cubic-bezier(.2,.9,.3,1) both;
+}
+@keyframes aparece{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.p-linea{
+  width:52px;height:2px;background:rgba(255,255,255,.5);
+  margin:28px 0 22px;position:relative;
+  animation:crece .7s .3s cubic-bezier(.2,.9,.3,1) both;
+}
+@keyframes crece{from{width:0;opacity:0}to{width:52px;opacity:1}}
+.p-sistema{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:12.5px;letter-spacing:.36em;text-transform:uppercase;
+  color:rgba(255,255,255,.52);margin:0 0 12px;position:relative;
+  animation:sale .7s .38s ease both;
+}
+.p-titulo{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:clamp(38px,13vw,62px);line-height:.86;
+  text-transform:uppercase;margin:0;color:#fff;position:relative;
+  animation:sale .7s .46s ease both;
+}
+.p-titulo span{
+  display:block;color:rgba(255,255,255,.4);
+  font-size:.42em;letter-spacing:.06em;margin-top:12px;
+}
+.p-club{
+  font-family:'Barlow Condensed',sans-serif;font-weight:500;
+  font-size:15px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin:20px 0 0;position:relative;
+  animation:sale .7s .54s ease both;
+}
+@keyframes sale{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.p-entrar{
+  margin-top:46px;position:relative;
+  background:#fff;color:var(--negro);border:0;border-radius:4px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:22px;letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 54px 13px;cursor:pointer;
+  box-shadow:0 3px 0 rgba(255,255,255,.28),0 12px 30px rgba(0,0,0,.5);
+  animation:sale .7s .64s ease both;
+  transition:transform .13s ease,box-shadow .13s ease;
+}
+.p-entrar:active{transform:translateY(3px);box-shadow:0 0 0 rgba(255,255,255,.28)}
+.p-entrar:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.p-pie{
+  padding:0 26px 26px;text-align:center;position:relative;z-index:1;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);
+}
+
+/* ════════ Cabeceras del sistema ════════ */
+.cabecera{padding:24px 18px 18px}
+.cab-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gris-tenue);margin:0 0 8px;
+}
+.cab-tit{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:clamp(30px,8.6vw,42px);line-height:.92;
+  text-transform:uppercase;margin:0 0 8px;color:var(--tinta);
+}
+.cab-sub{font-size:13px;color:var(--gris-txt);margin:0;line-height:1.55}
+.cab-sub b{color:var(--tinta);font-weight:600}
+
+/* ════════════════ 2 · EVENTOS ════════════════ */
+.tarjetas{padding:0 14px}
+.ev{
+  display:block;width:100%;text-align:left;color:inherit;
+  background:var(--blanco);border:1px solid var(--gris-borde);
+  border-radius:7px;padding:0;margin-bottom:12px;cursor:pointer;
+  overflow:hidden;position:relative;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  transition:border-color .15s ease,transform .13s ease,box-shadow .15s ease;
+}
+.ev:active{transform:scale(.988)}
+.ev:hover{border-color:var(--tinta);box-shadow:0 3px 10px rgba(0,0,0,.07)}
+.ev:focus-visible{outline:2.5px solid var(--tinta);outline-offset:2px}
+.ev-top{
+  display:flex;align-items:center;gap:9px;
+  padding:10px 15px;background:var(--gris-suave);
+  border-bottom:1px solid var(--gris-borde);
+}
+.chip{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+  padding:3px 9px 2px;border-radius:2px;
+  background:var(--tinta);color:#fff;
+}
+.chip.gris{background:transparent;color:var(--gris-txt);box-shadow:inset 0 0 0 1px var(--gris-borde)}
+.ev-fecha{margin-left:auto;font-size:11.5px;color:var(--gris-txt);white-space:nowrap}
+.ev-cuerpo{padding:15px 15px 16px}
+.ev-vs{
+  font-family:'Barlow Condensed',sans-serif;font-weight:500;
+  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris-tenue);
+}
+.ev-rival{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:32px;line-height:1;text-transform:uppercase;margin:2px 0 12px;
+}
+.ev-linea{display:flex;align-items:center;gap:10px}
+.ev-mini{flex:1;height:3px;background:var(--gris-borde);border-radius:99px;overflow:hidden}
+.ev-mini i{display:block;height:100%;background:var(--tinta);width:0;transition:width .5s ease}
+.ev-cuenta{font-size:11.5px;color:var(--gris-txt);white-space:nowrap;letter-spacing:.04em}
+.ev-flecha{position:absolute;right:14px;bottom:15px;color:var(--gris-tenue)}
+
+/* ════════════════ 3 · MENÚ ════════════════ */
+.menu{padding:2px 14px 0}
+.mod{
+  display:flex;align-items:stretch;width:100%;text-align:left;color:inherit;
+  border:0;border-radius:8px;margin-bottom:13px;cursor:pointer;
+  overflow:hidden;position:relative;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  transition:transform .13s ease,box-shadow .15s ease;
+}
+.mod:active{transform:scale(.988)}
+.mod:hover{box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.mod:focus-visible{outline:2.5px solid var(--tinta);outline-offset:3px}
+.mod-icono{
+  flex:0 0 82px;display:grid;place-items:center;
+  background:var(--tinta);color:#fff;
+}
+.mod-icono svg{width:36px;height:36px}
+.mod.mesa .mod-icono{background:var(--gris-suave);color:var(--tinta);box-shadow:inset -1px 0 0 var(--gris-borde),inset 1px 0 0 var(--gris-borde),inset 0 1px 0 var(--gris-borde),inset 0 -1px 0 var(--gris-borde)}
+.mod-cuerpo{
+  flex:1;min-width:0;padding:16px 16px 15px;
+  background:var(--blanco);border:1px solid var(--gris-borde);border-left:0;
+}
+.mod-nom{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:25px;line-height:1;text-transform:uppercase;margin:0 0 5px;display:block;
+}
+.mod-desc{font-size:12.5px;color:var(--gris-txt);margin:0 0 12px;line-height:1.4;display:block}
+.mod-estado{display:flex;align-items:center;gap:9px}
+.mod-bar{flex:1;height:3px;background:var(--gris-borde);border-radius:99px;overflow:hidden}
+.mod-bar i{display:block;height:100%;background:var(--tinta);width:0;transition:width .5s ease}
+.mod-cuenta{font-size:11.5px;color:var(--gris-txt);white-space:nowrap}
+
+/* ════════ Marcador ════════ */
+.tablero{display:flex;align-items:flex-end;gap:9px;padding:0 18px 12px}
+.tablero .n{font-family:'Barlow Condensed',sans-serif;font-size:54px;font-weight:700;line-height:.72;color:var(--tinta)}
+.tablero .de{font-family:'Barlow Condensed',sans-serif;font-size:25px;color:var(--gris-tenue);line-height:.8}
+.tablero .lbl{
+  font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gris-txt);margin-left:auto;text-align:right;line-height:1.35;
+}
+.barra{height:4px;background:var(--gris-borde);margin:0 18px;border-radius:99px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--tinta);width:0;transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.franja{
+  height:3px;margin-top:16px;
+  background:repeating-linear-gradient(90deg,var(--tinta) 0 22px,var(--gris-borde) 22px 44px);
+}
+
+/* ════════════════ 4a · PORTERÍA ════════════════ */
+.lista{padding:6px 14px 0}
+.bloque{margin-top:20px}
+.rotulo{display:flex;align-items:center;gap:11px;margin-bottom:10px;padding:0 2px}
+.rotulo .cat{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:25px;line-height:1;letter-spacing:.04em}
+.rotulo .linea{flex:1;height:1px;background:var(--gris-borde)}
+.rotulo .bola{font-size:11px;color:var(--gris-tenue);letter-spacing:.05em;white-space:nowrap}
+
+.boleto{
+  display:flex;background:var(--blanco);color:var(--tinta);
+  border:1px solid var(--gris-borde);border-radius:5px;
+  margin-bottom:9px;position:relative;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  opacity:0;transform:translateY(9px);
+  animation:entra .4s cubic-bezier(.2,.85,.3,1) forwards;
+}
+@keyframes entra{to{opacity:1;transform:none}}
+.boleto.tomado{background:var(--gris-suave)}
+.talon{
+  flex:0 0 86px;background:var(--tinta);color:#fff;
+  border-radius:4px 0 0 4px;padding:14px 8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;position:relative;
+}
+.talon .h{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;line-height:1}
+.talon .h.fin{color:rgba(255,255,255,.42);font-size:17px}
+.talon .guion{width:11px;height:1px;background:rgba(255,255,255,.5);margin:2px 0}
+.talon::before,.talon::after{
+  content:"";position:absolute;right:-7px;width:13px;height:13px;
+  border-radius:50%;background:var(--humo);
+}
+.talon::before{top:-7px}
+.talon::after{bottom:-7px}
+.cuerpo{
+  flex:1;min-width:0;padding:12px 14px;
+  border-left:2px dashed var(--gris-borde);
+  display:flex;align-items:center;gap:10px;min-height:82px;
+}
+.slot-lbl{
+  font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--gris-tenue);font-weight:600;display:block;margin-bottom:3px;
+}
+.libre-txt{font-size:13.5px;color:var(--gris-txt)}
+.persona{min-width:0;flex:1}
+.p-nombre{font-weight:600;font-size:15px;line-height:1.25;word-break:break-word;display:block}
+.p-cat{font-size:11.5px;color:var(--gris-txt);margin-top:2px;display:block}
+.tilde{
+  flex:0 0 auto;width:21px;height:21px;border-radius:50%;
+  background:var(--tinta);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700;
+}
+.btn-anotar{
+  margin-left:auto;flex:0 0 auto;
+  font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:var(--tinta);color:#fff;border:0;border-radius:3px;
+  padding:11px 16px 9px;cursor:pointer;white-space:nowrap;
+  box-shadow:0 2px 0 #000;
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+}
+.btn-anotar:active{transform:translateY(2px);box-shadow:none;background:var(--tinta-2)}
+.btn-anotar:focus-visible{outline:2.5px solid var(--tinta);outline-offset:3px}
+.btn-soltar{
+  margin-left:auto;background:none;border:0;padding:10px 0 10px 8px;
+  font-size:11px;color:var(--gris-tenue);text-decoration:underline;cursor:pointer;white-space:nowrap;
+}
+
+/* ════════════════ 4b · MESA ════════════════ */
+.consola{
+  background:var(--blanco);border:1px solid var(--gris-borde);
+  border-radius:7px;margin-bottom:9px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  opacity:0;transform:translateY(9px);
+  animation:entra .4s cubic-bezier(.2,.85,.3,1) forwards;
+}
+.puesto{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;min-height:74px;
+  border-top:1px solid var(--gris-borde);
+}
+.puesto:first-child{border-top:0}
+.puesto.ocupado{background:var(--gris-suave)}
+.p-icono{
+  flex:0 0 44px;height:44px;border-radius:4px;
+  background:var(--gris-suave);border:1px solid var(--gris-borde);
+  display:grid;place-items:center;color:var(--gris-tenue);
+  transition:background .15s ease,color .15s ease;
+}
+.puesto.ocupado .p-icono{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.p-icono svg{width:22px;height:22px}
+.p-icono .num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;line-height:1}
+.p-info{flex:1;min-width:0}
+.p-puesto{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:16px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--tinta);display:block;line-height:1.1;
+}
+.p-detalle{font-size:11.5px;color:var(--gris-tenue);display:block;margin-top:2px}
+.p-quien{font-size:14px;font-weight:600;color:var(--tinta);display:block;margin-top:3px;word-break:break-word}
+.p-quien small{font-weight:400;color:var(--gris-txt);font-size:11.5px}
+.btn-mesa{
+  margin-left:auto;flex:0 0 auto;
+  font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  background:transparent;color:var(--tinta);
+  border:1.5px solid var(--tinta);border-radius:3px;
+  padding:9px 15px 7px;cursor:pointer;white-space:nowrap;
+  transition:background .14s ease,color .14s ease;
+}
+.btn-mesa:active{background:var(--tinta);color:#fff}
+.btn-mesa:focus-visible{outline:2.5px solid var(--tinta);outline-offset:3px}
+.btn-soltar-osc{
+  margin-left:auto;background:none;border:0;padding:10px 0 10px 8px;
+  font-size:11px;color:var(--gris-tenue);text-decoration:underline;cursor:pointer;white-space:nowrap;
+}
+
+/* ════════ Varios ════════ */
+.aviso{
+  margin:18px 14px 0;padding:13px 15px;border-radius:4px;
+  background:var(--blanco);border:1px solid var(--gris-borde);
+  border-left:3px solid var(--tinta);font-size:13px;color:var(--gris-txt);
+}
+.aviso b{color:var(--tinta)}
+.pie{padding:26px 24px 40px;text-align:center;font-size:12px;color:var(--gris-tenue);line-height:1.7}
+.pie b{color:var(--gris-txt)}
+.cargando{padding:70px 20px;text-align:center;color:var(--gris-tenue);font-size:14px}
+
+/* ════════ Hoja de anotación ════════ */
+.velo{position:fixed;inset:0;background:rgba(11,11,12,.62);display:none;align-items:flex-end;z-index:60;backdrop-filter:blur(3px)}
+.velo.on{display:flex}
+.hoja{
+  background:var(--blanco);color:var(--tinta);width:100%;
+  border-radius:14px 14px 0 0;border-top:4px solid var(--tinta);
+  padding:22px 20px calc(22px + env(safe-area-inset-bottom));
+  animation:sube .28s cubic-bezier(.2,.9,.25,1);max-height:92vh;overflow-y:auto;
+}
+@keyframes sube{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .hoja,.boleto,.consola,.escudo-hero,.p-sistema,.p-titulo,.p-club,.p-entrar{
+    animation:none;opacity:1;transform:none;
+  }
+  .p-linea{animation:none;opacity:1;width:52px}
+  .barra i,.mod-bar i,.ev-mini i{transition:none}
+}
+.hoja h2{font-family:'Barlow Condensed',sans-serif;font-size:27px;font-weight:700;text-transform:uppercase;margin:0 0 3px;line-height:1}
+.hoja .cuando{font-size:13px;color:var(--gris-txt);margin:0 0 20px}
+label{display:block;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-tenue);margin:0 0 6px}
+input,select{
+  width:100%;padding:13px 12px;font-size:16px;font-family:inherit;
+  border:1.5px solid var(--gris-borde);border-radius:3px;
+  background:var(--blanco);color:var(--tinta);margin-bottom:16px;
+}
+input:focus,select:focus{outline:0;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(22,22,24,.09)}
+.fila{display:flex;gap:10px}
+.fila>div{flex:1}
+.btn-ok{
+  width:100%;padding:15px;border:0;border-radius:3px;
+  background:var(--tinta);color:#fff;
+  font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+}
+.btn-ok:disabled{opacity:.45}
+.btn-no{width:100%;padding:12px;margin-top:6px;background:none;border:0;font-size:14px;color:var(--gris-txt);cursor:pointer;font-family:inherit}
+.error{color:#B3261E;font-size:13px;margin:-8px 0 12px;font-weight:500}
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,150%);
+  background:var(--tinta);color:#fff;padding:13px 22px;border-radius:99px;
+  font-size:14px;font-weight:600;z-index:90;
+  transition:transform .32s cubic-bezier(.2,.9,.25,1);box-shadow:0 8px 26px rgba(0,0,0,.28);
+}
+.toast.on{transform:translate(-50%,0)}
+
+</style>
+</head>
+<body>
+<!-- ═══════════ 1 · PORTADA ═══════════ -->
+<section class="vista on" id="v-portada">
+  <div class="rayado"></div>
+  <div class="portada">
+    <img class="escudo-hero" id="esc-hero" alt="Escudo del Club Independiente de Tandil">
+    <div class="p-linea"></div>
+    <p class="p-sistema">Sistema de gestión</p>
+    <h1 class="p-titulo">Colaboradores<span>Básquet</span></h1>
+    <p class="p-club">Independiente de Tandil</p>
+    <button class="p-entrar" id="btn-entrar">Entrar</button>
+  </div>
+  <p class="p-pie">Subcomisión de Básquet</p>
+</section>
+
+<!-- ═══════════ 2 · EVENTOS ═══════════ -->
+<section class="vista" id="v-eventos">
+  <div class="barra-sup">
+    <button class="volver" data-ir="portada">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Inicio
+    </button>
+    <img class="barra-esc" id="esc-b1" alt="">
+  </div>
+  <div class="cabecera">
+    <p class="cab-eyebrow">Paso 1 de 3</p>
+    <h2 class="cab-tit">Elegí el<br>partido</h2>
+    <p class="cab-sub">Cada tarjeta muestra cuántos puestos están cubiertos.</p>
+  </div>
+  <div class="tarjetas" id="lista-eventos"></div>
+  <p class="pie">Para agregar un partido nuevo se edita la lista <b>EVENTOS</b> dentro del archivo.</p>
+</section>
+
+<!-- ═══════════ 3 · MENÚ ═══════════ -->
+<section class="vista" id="v-menu">
+  <div class="barra-sup">
+    <button class="volver" data-ir="eventos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Partidos
+    </button>
+    <img class="barra-esc" id="esc-b2" alt="">
+  </div>
+  <div class="cabecera">
+    <p class="cab-eyebrow" id="menu-eyebrow"></p>
+    <h2 class="cab-tit" id="menu-tit"></h2>
+    <p class="cab-sub" id="menu-sub"></p>
+  </div>
+  <div class="menu" id="lista-menu"></div>
+  <p class="pie">Anotate donde puedas dar una mano.<br>Con dos ratos por familia, la jornada sale sola.</p>
+</section>
+
+<!-- ═══════════ 4 · ÁREA ═══════════ -->
+<section class="vista" id="v-area">
+  <div class="barra-sup">
+    <button class="volver" data-ir="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Volver
+    </button>
+    <span class="barra-tit" id="area-barra-tit"></span>
+    <img class="barra-esc" id="esc-b3" alt="">
+  </div>
+  <div class="cabecera" style="padding-bottom:12px">
+    <p class="cab-eyebrow" id="area-eyebrow"></p>
+    <h2 class="cab-tit" id="area-tit"></h2>
+    <p class="cab-sub" id="area-sub"></p>
+  </div>
+  <div class="tablero">
+    <span class="n" id="cubiertos">0</span>
+    <span class="de" id="total">/0</span>
+    <span class="lbl">puestos<br>cubiertos</span>
+  </div>
+  <div class="barra"><i id="barra"></i></div>
+  <div class="franja"></div>
+  <div id="pantalla" class="cargando">Abriendo la planilla…</div>
+  <p class="pie" id="area-pie"></p>
+</section>
+
+<!-- ═══════════ Hoja de anotación ═══════════ -->
+<div class="velo" id="velo">
+  <div class="hoja" role="dialog" aria-modal="true" aria-labelledby="hoja-titulo">
+    <h2 id="hoja-titulo">Me anoto</h2>
+    <p class="cuando" id="hoja-cuando"></p>
+
+    <label for="f-nombre">Nombre y apellido</label>
+    <input id="f-nombre" type="text" autocomplete="name" placeholder="Juan Pérez">
+
+    <div class="fila">
+      <div>
+        <label for="f-cat">Categoría</label>
+        <select id="f-cat"></select>
+      </div>
+      <div>
+        <label for="f-tel">Teléfono</label>
+        <input id="f-tel" type="tel" inputmode="tel" placeholder="2494 123456">
+      </div>
+    </div>
+
+    <p class="error" id="f-error" style="display:none"></p>
+    <button class="btn-ok" id="f-ok">Confirmar</button>
+    <button class="btn-no" id="f-no">Cancelar</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ════════ Estado ════════ */
+let datos = {};                  // { clave: {nombre, categoria, telefono} }
+let evento = null;               // evento elegido
+let area = null;                 // "porteria" | "mesa"
+let objetivo = null;             // { clave, descriptores... }
+let vista = "portada";
+const DEMO = !CONFIG.API_URL;
+const CLAVE_LOCAL = "colaboradores_demo_v1";
+
+/* ════════ Escudo ════════ */
+["esc-hero","esc-b1","esc-b2","esc-b3"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.src = ESCUDO;
+});
+["apple-touch-icon","icon"].forEach(rel => {
+  const l = document.createElement("link");
+  l.rel = rel; l.href = ESCUDO;
+  document.head.appendChild(l);
+});
+
+CONFIG.CATEGORIAS.forEach(c => {
+  const o = document.createElement("option");
+  o.value = c; o.textContent = c;
+  document.getElementById("f-cat").appendChild(o);
+});
+
+/* ════════ Claves y conteos ════════ */
+function clave(evId, ar, partidoId, puesto){
+  return evId + "|" + ar + "|" + partidoId + "|" + puesto;
+}
+function puestosDe(ev, ar){
+  const out = [];
+  ev.partidos.forEach(p => {
+    if (ar === "porteria"){
+      p.tramos.forEach((tr, i) => out.push({
+        partido:p, puesto:String(i+1), tramo:tr, total:p.tramos.length,
+        etiqueta:"Tramo " + (i+1) + " de " + p.tramos.length,
+        cuando:tr.desde + " a " + tr.hasta
+      }));
+    } else {
+      CONFIG.PUESTOS_MESA.forEach(pm => out.push({
+        partido:p, puesto:pm.id, mesa:pm,
+        etiqueta:pm.nombre,
+        cuando:"partido de " + p.cat + ", " + p.bola + " hs"
+      }));
+    }
+  });
+  return out;
+}
+function contar(ev, ar){
+  const lista = puestosDe(ev, ar);
+  let n = 0;
+  lista.forEach(x => { if (datos[clave(ev.id, ar, x.partido.id, x.puesto)]) n++; });
+  return { hechos:n, total:lista.length };
+}
+
+/* ════════ Navegación ════════ */
+function ir(v, push){
+  document.querySelectorAll(".vista").forEach(s => s.classList.remove("on"));
+  document.getElementById("v-" + v).classList.add("on");
+  vista = v;
+  window.scrollTo(0, 0);
+  if (push !== false) history.pushState({ v }, "");
+}
+document.querySelectorAll("[data-ir]").forEach(b =>
+  b.onclick = () => {
+    const d = b.dataset.ir;
+    if (d === "eventos") pintarEventos();
+    if (d === "menu") pintarMenu();
+    ir(d);
+  });
+window.addEventListener("popstate", e => {
+  const v = (e.state && e.state.v) || "portada";
+  if (v === "eventos") pintarEventos();
+  if (v === "menu") pintarMenu();
+  if (v === "area") pintarArea();
+  ir(v, false);
+});
+
+document.getElementById("btn-entrar").onclick = async () => {
+  pintarEventos();
+  ir("eventos");
+  await cargar();
+  if (vista === "eventos") pintarEventos();
+};
+
+/* ════════ Datos ════════ */
+async function cargar(){
+  if (DEMO){
+    try { datos = JSON.parse(localStorage.getItem(CLAVE_LOCAL) || "{}"); } catch(e){ datos = {}; }
+    return true;
+  }
+  try{
+    const r = await fetch(CONFIG.API_URL + "?accion=leer&t=" + Date.now());
+    const j = await r.json();
+    datos = j.datos || {};
+    return true;
+  }catch(e){ return false; }
+}
+function guardarLocal(){ localStorage.setItem(CLAVE_LOCAL, JSON.stringify(datos)); }
+
+/* ════════ 2 · Eventos ════════ */
+function pintarEventos(){
+  const cont = document.getElementById("lista-eventos");
+  cont.innerHTML = "";
+  CONFIG.EVENTOS.forEach(ev => {
+    const cP = contar(ev, "porteria");
+    const cM = contar(ev, "mesa");
+    const hechos = cP.hechos + cM.hechos, total = cP.total + cM.total;
+    const b = document.createElement("button");
+    b.className = "ev";
+    b.innerHTML =
+      '<div class="ev-top">' +
+        '<span class="chip' + (ev.tipo === "individual" ? "" : " gris") + '">' +
+          (ev.tipo === "individual" ? "Partido único" : "Tira formativa") + '</span>' +
+        '<span class="ev-fecha">' + esc(ev.fecha) + '</span>' +
+      '</div>' +
+      '<div class="ev-cuerpo">' +
+        '<span class="ev-vs">' + esc(ev.division) + ' · vs</span>' +
+        '<div class="ev-rival">' + esc(ev.rival) + '</div>' +
+        '<div class="ev-linea">' +
+          '<span class="ev-mini"><i style="width:' + (total ? hechos/total*100 : 0) + '%"></i></span>' +
+          '<span class="ev-cuenta">' + hechos + '/' + total + ' puestos</span>' +
+        '</div>' +
+        '<svg class="ev-flecha" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>' +
+      '</div>';
+    b.onclick = () => { evento = ev; pintarMenu(); ir("menu"); };
+    cont.appendChild(b);
+  });
+}
+
+/* ════════ 3 · Menú ════════ */
+const ICONOS = {
+  porteria: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.2a2.3 2.3 0 0 0 0 4.6v1.2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.2a2.3 2.3 0 0 0 0-4.6z"/><path d="M13 6.5v2M13 11v2M13 15.5v2"/></svg>',
+  mesa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="11.5" rx="1.6"/><path d="M7 19.5h10M12 16.5v3"/><path d="M6.5 9.2v3.1M9.4 9.2v3.1M14.6 9.2h2.9M14.6 12.3h2.9M14.6 9.2v3.1"/></svg>',
+  reloj: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.6M9.5 2h5M18.8 5.6l1.4 1.4"/></svg>',
+  tablet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2.2"/><path d="M10.7 18.6h2.6"/></svg>'
+};
+
+function pintarMenu(){
+  if (!evento) return;
+  document.getElementById("menu-eyebrow").textContent = "Paso 2 de 3 · " + evento.fecha;
+  document.getElementById("menu-tit").innerHTML = "vs " + esc(evento.rival);
+  document.getElementById("menu-sub").innerHTML =
+    esc(evento.division) + " · " + esc(evento.torneo) + "<br>" + esc(evento.sede);
+
+  const areas = [
+    { id:"porteria", nombre:"Portería", desc:"Cobro de entradas en la puerta. Cada tramo lo cubre una persona." },
+    { id:"mesa",     nombre:"Mesa de control", desc:"Reloj general, reloj de 24 y tablet en cada partido." }
+  ];
+
+  const cont = document.getElementById("lista-menu");
+  cont.innerHTML = "";
+  areas.forEach(a => {
+    const c = contar(evento, a.id);
+    const b = document.createElement("button");
+    b.className = "mod " + a.id;
+    b.innerHTML =
+      '<span class="mod-icono">' + ICONOS[a.id] + '</span>' +
+      '<span class="mod-cuerpo">' +
+        '<span class="mod-nom">' + a.nombre + '</span>' +
+        '<span class="mod-desc">' + a.desc + '</span>' +
+        '<span class="mod-estado">' +
+          '<span class="mod-bar"><i style="width:' + (c.total ? c.hechos/c.total*100 : 0) + '%"></i></span>' +
+          '<span class="mod-cuenta">' + c.hechos + '/' + c.total + '</span>' +
+        '</span>' +
+      '</span>';
+    b.onclick = () => { area = a.id; pintarArea(); ir("area"); };
+    cont.appendChild(b);
+  });
+}
+
+/* ════════ 4 · Área ════════ */
+function pintarArea(){
+  if (!evento || !area) return;
+  const esPorteria = area === "porteria";
+
+  document.getElementById("area-barra-tit").textContent = "vs " + evento.rival;
+  document.getElementById("area-eyebrow").textContent = "Paso 3 de 3 · " + evento.fecha;
+  document.getElementById("area-tit").textContent = esPorteria ? "Portería" : "Mesa de control";
+  document.getElementById("area-sub").textContent = esPorteria
+    ? "Llegás, cobrás tu rato y te vas a ver el partido."
+    : "Tres puestos por partido. Se cubre el partido completo.";
+  document.getElementById("area-pie").innerHTML = esPorteria
+    ? "<b>Si te anotaste y después no podés, soltá el lugar</b><br>así lo agarra otro a tiempo."
+    : "Si nunca lo hiciste, avisá y te acompañamos los<br>primeros minutos. Se aprende en un partido.";
+
+  const cont = document.getElementById("pantalla");
+  cont.className = "lista";
+  cont.innerHTML = "";
+  let i = 0;
+
+  evento.partidos.forEach(p => {
+    const bloque = document.createElement("section");
+    bloque.className = "bloque";
+    let html =
+      '<div class="rotulo">' +
+        '<span class="cat">' + esc(p.cat) + '</span>' +
+        '<span class="linea"></span>' +
+        '<span class="bola">bola al aire ' + esc(p.bola) + '</span>' +
+      '</div>';
+
+    if (esPorteria){
+      p.tramos.forEach((tr, k) => { html += boleto(p, tr, k, i++); });
+    } else {
+      html += '<div class="consola" style="animation-delay:' + (i++ * 60) + 'ms">' +
+        CONFIG.PUESTOS_MESA.map(pm => puestoMesa(p, pm)).join("") + '</div>';
+    }
+    bloque.innerHTML = html;
+    cont.appendChild(bloque);
+  });
+
+  if (DEMO){
+    const a = document.createElement("div");
+    a.className = "aviso";
+    a.innerHTML = "<b>Modo prueba.</b> Falta pegar la URL del Apps Script en el renglón <b>API_URL</b>, al principio del archivo. Hasta entonces lo que anotes queda solo en este celular.";
+    cont.appendChild(a);
+  }
+
+  cont.querySelectorAll("[data-anotar]").forEach(b =>
+    b.onclick = () => abrirHoja(b.dataset.partido, b.dataset.puesto));
+  cont.querySelectorAll("[data-soltar]").forEach(b =>
+    b.onclick = () => soltar(b.dataset.partido, b.dataset.puesto));
+
+  const c = contar(evento, area);
+  document.getElementById("cubiertos").textContent = c.hechos;
+  document.getElementById("total").textContent = "/" + c.total;
+  document.getElementById("barra").style.width = (c.total ? c.hechos/c.total*100 : 0) + "%";
+}
+
+function boleto(p, tr, k, idx){
+  const puesto = String(k+1);
+  const per = datos[clave(evento.id, "porteria", p.id, puesto)];
+  const etiqueta = "Tramo " + (k+1) + " de " + p.tramos.length;
+  const cuerpo = per
+    ? '<span class="tilde">✓</span>' +
+      '<span class="persona">' +
+        '<span class="slot-lbl">' + etiqueta + '</span>' +
+        '<span class="p-nombre">' + esc(per.nombre) + '</span>' +
+        '<span class="p-cat">' + esc(per.categoria || "") + '</span>' +
+      '</span>' +
+      '<button class="btn-soltar" data-soltar data-partido="' + p.id + '" data-puesto="' + puesto + '">Soltar</button>'
+    : '<span class="persona">' +
+        '<span class="slot-lbl">' + etiqueta + '</span>' +
+        '<span class="libre-txt">Libre</span>' +
+      '</span>' +
+      '<button class="btn-anotar" data-anotar data-partido="' + p.id + '" data-puesto="' + puesto + '">Me anoto</button>';
+
+  return '<article class="boleto' + (per ? ' tomado' : '') + '" style="animation-delay:' + (idx*45) + 'ms">' +
+    '<div class="talon">' +
+      '<span class="h">' + tr.desde + '</span>' +
+      '<span class="guion"></span>' +
+      '<span class="h fin">' + tr.hasta + '</span>' +
+    '</div>' +
+    '<div class="cuerpo">' + cuerpo + '</div>' +
+  '</article>';
+}
+
+function puestoMesa(p, pm){
+  const per = datos[clave(evento.id, "mesa", p.id, pm.id)];
+  const icono = pm.id === "24"
+    ? '<span class="num">24</span>'
+    : (pm.id === "reloj" ? ICONOS.reloj : ICONOS.tablet);
+  const derecha = per
+    ? '<button class="btn-soltar-osc" data-soltar data-partido="' + p.id + '" data-puesto="' + pm.id + '">Soltar</button>'
+    : '<button class="btn-mesa" data-anotar data-partido="' + p.id + '" data-puesto="' + pm.id + '">Me anoto</button>';
+  const info = per
+    ? '<span class="p-puesto">' + pm.nombre + '</span>' +
+      '<span class="p-quien">' + esc(per.nombre) +
+        (per.categoria ? ' <small>· ' + esc(per.categoria) + '</small>' : '') + '</span>'
+    : '<span class="p-puesto">' + pm.nombre + '</span>' +
+      '<span class="p-detalle">' + pm.detalle + '</span>';
+
+  return '<div class="puesto' + (per ? ' ocupado' : '') + '">' +
+    '<span class="p-icono">' + icono + '</span>' +
+    '<span class="p-info">' + info + '</span>' +
+    derecha +
+  '</div>';
+}
+
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+/* ════════ Anotarse ════════ */
+function abrirHoja(partidoId, puesto){
+  const p = evento.partidos.find(x => x.id === partidoId);
+  let etiqueta, cuando;
+  if (area === "porteria"){
+    const k = parseInt(puesto, 10) - 1;
+    const tr = p.tramos[k];
+    etiqueta = "Portería · tramo " + puesto;
+    cuando = tr.desde + " a " + tr.hasta + " · partido de " + p.cat;
+  } else {
+    const pm = CONFIG.PUESTOS_MESA.find(x => x.id === puesto);
+    etiqueta = "Mesa · " + pm.nombre;
+    cuando = "Partido de " + p.cat + " · bola al aire " + p.bola + " hs";
+  }
+  objetivo = { partidoId, puesto, etiqueta, cuando, cat:p.cat };
+  document.getElementById("hoja-titulo").textContent = etiqueta;
+  document.getElementById("hoja-cuando").textContent = cuando;
+  document.getElementById("f-error").style.display = "none";
+  document.getElementById("velo").classList.add("on");
+  setTimeout(() => document.getElementById("f-nombre").focus(), 260);
+}
+
+document.getElementById("f-no").onclick = cerrarHoja;
+document.getElementById("velo").onclick = e => { if (e.target.id === "velo") cerrarHoja(); };
+function cerrarHoja(){ document.getElementById("velo").classList.remove("on"); }
+
+document.getElementById("f-ok").onclick = async function(){
+  const nombre = document.getElementById("f-nombre").value.trim();
+  const cat = document.getElementById("f-cat").value;
+  const tel = document.getElementById("f-tel").value.trim();
+  const err = document.getElementById("f-error");
+  const btn = this;
+
+  if (nombre.length < 4){
+    err.textContent = "Poné nombre y apellido para saber quién viene.";
+    err.style.display = "block"; return;
+  }
+
+  btn.disabled = true; btn.textContent = "Guardando…";
+  const k = clave(evento.id, area, objetivo.partidoId, objetivo.puesto);
+
+  const listo = msg => {
+    document.getElementById("f-nombre").value = "";
+    document.getElementById("f-tel").value = "";
+    cerrarHoja(); pintarArea(); avisar(msg);
+    btn.disabled = false; btn.textContent = "Confirmar";
+  };
+
+  if (DEMO){
+    datos[k] = { nombre, categoria:cat, telefono:tel };
+    guardarLocal(); listo("Anotado. Gracias."); return;
+  }
+
+  try{
+    const r = await fetch(CONFIG.API_URL, {
+      method:"POST",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        accion:"anotar", clave:k,
+        evento: evento.rival + " · " + evento.fecha,
+        area: area === "porteria" ? "Portería" : "Mesa de control",
+        partido: objetivo.cat,
+        puesto: objetivo.etiqueta,
+        cuando: objetivo.cuando,
+        nombre, categoria:cat, telefono:tel
+      })
+    });
+    const j = await r.json();
+    if (!j.ok){
+      err.textContent = j.mensaje || "Ese puesto lo tomaron recién. Elegí otro.";
+      err.style.display = "block";
+      btn.disabled = false; btn.textContent = "Confirmar";
+      datos = j.datos || datos; pintarArea(); return;
+    }
+    datos = j.datos;
+    listo("Anotado. Gracias.");
+  }catch(e){
+    err.textContent = "No se pudo guardar. Probá de nuevo en unos segundos.";
+    err.style.display = "block";
+    btn.disabled = false; btn.textContent = "Confirmar";
+  }
+};
+
+async function soltar(partidoId, puesto){
+  const k = clave(evento.id, area, partidoId, puesto);
+  const per = datos[k];
+  if (!per) return;
+  if (!confirm("¿Sacar a " + per.nombre + " de ese puesto?")) return;
+
+  if (DEMO){
+    delete datos[k]; guardarLocal(); pintarArea(); avisar("Lugar liberado."); return;
+  }
+  try{
+    const r = await fetch(CONFIG.API_URL, {
+      method:"POST",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body: JSON.stringify({ accion:"soltar", clave:k })
+    });
+    const j = await r.json();
+    datos = j.datos || datos;
+    pintarArea(); avisar("Lugar liberado.");
+  }catch(e){ avisar("No se pudo liberar. Probá de nuevo."); }
+}
+
+/* ════════ Aviso ════════ */
+let tToast;
+function avisar(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(tToast);
+  tToast = setTimeout(() => t.classList.remove("on"), 2600);
+}
+
+/* ════════ Refresco ════════ */
+document.addEventListener("visibilitychange", async () => {
+  if (document.hidden || DEMO) return;
+  await cargar();
+  if (vista === "area") pintarArea();
+  if (vista === "menu") pintarMenu();
+  if (vista === "eventos") pintarEventos();
+});
+
+history.replaceState({ v:"portada" }, "");
+</script>
+</body>
+</html>

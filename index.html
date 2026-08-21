@@ -26,6 +26,12 @@ const ESCUDO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrF
    abajo de todo en la pantalla de inicio.
    ══════════════════════════════════════════════════════════ */
 const CONFIG = {
+  /* Clave para entrar a Administración. Cambiala por la que quieras.
+     Queda escrita acá, así que cualquiera que mire el código de la página
+     puede verla: sirve para que nadie toque de casualidad, no como secreto.
+     Tiene que ser la misma que figura en CLAVE_ADMIN del Apps Script. */
+  CLAVE_ADMIN: "rojinegro2026",
+
   API_URL: "https://script.google.com/macros/s/AKfycbxMZEu5FjjSAmnrCYOwLJFoFIOfwbG4g3K4a64e5a32kz-TPSzm2E5pFfaDcdr4P40D/exec",
 
   /* Los partidos ya no se escriben acá: se cargan desde la propia app,
@@ -676,6 +682,10 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
   <div class="tarjetas" id="lista-fichas"></div>
   <div style="padding:0 14px">
     <button class="btn-ok" id="p-nuevo">Cargar un partido</button>
+    <button class="btn-linea" id="p-diag" style="margin-top:10px">Probar la conexi&oacute;n con la planilla</button>
+    <pre id="p-salida" style="display:none;white-space:pre-wrap;word-break:break-all;
+      background:var(--carbon);border:1px solid var(--linea);border-radius:5px;
+      padding:12px;font-size:11px;line-height:1.5;color:var(--gris);margin-top:10px"></pre>
   </div>
   <p class="pie">Al borrar un partido se borran tambi&eacute;n<br>las anotaciones de ese partido.</p>
 </section>
@@ -1330,26 +1340,26 @@ document.getElementById("btn-admin").onclick = () => {
 document.getElementById("a-entrar").onclick = async function(){
   const cl = document.getElementById("a-clave").value.trim();
   const err = document.getElementById("a-error");
+
   if (!cl){ err.textContent = "Escribí la clave."; err.style.display = "block"; return; }
 
-  this.disabled = true; this.textContent = "Verificando…";
-  try{
-    const j = await pedir({ accion:"admin", clave:cl });
-    if (!j.ok){
-      err.textContent = (j.mensaje === "Acción desconocida.")
-        ? "El Apps Script está en la versión vieja: falta implementar versión nueva."
-        : (j.mensaje || "Clave incorrecta.");
-      err.style.display = "block";
-    } else {
-      claveAdmin = cl;
-      if (Array.isArray(j.eventos)) CONFIG.EVENTOS = j.eventos;
-      pintarPanel(); ir("panel");
-    }
-  }catch(e){
-    err.textContent = (e && e.message) || "No se pudo verificar.";
+  /* La clave se controla acá mismo: así entrás aunque el Apps Script
+     todavía no esté actualizado. El servidor la vuelve a pedir al guardar. */
+  if (cl.toLowerCase() !== String(CONFIG.CLAVE_ADMIN).toLowerCase()){
+    err.textContent = "Clave incorrecta.";
     err.style.display = "block";
+    return;
   }
+
+  err.style.display = "none";
+  claveAdmin = cl;
+
+  this.disabled = true; this.textContent = "Entrando…";
+  try { await cargar(); } catch(e){ /* si falla, entra igual y lo dice el panel */ }
   this.disabled = false; this.textContent = "Ingresar";
+
+  pintarPanel();
+  ir("panel");
 };
 
 document.getElementById("a-clave").addEventListener("keydown", e => {
@@ -1392,6 +1402,44 @@ function pintarPanel(){
 }
 
 document.getElementById("p-nuevo").onclick = () => abrirForm(null);
+
+/* ── Diagnóstico: dice en qué estado está el Apps Script ── */
+document.getElementById("p-diag").onclick = async function(){
+  const caja = document.getElementById("p-salida");
+  caja.style.display = "block";
+  caja.textContent = "Probando…";
+  this.disabled = true;
+
+  const lineas = [];
+  try{
+    const j = await pedir({ accion:"leer" });
+    lineas.push("LECTURA: ok");
+    lineas.push("  anotaciones: " + Object.keys(j.datos || {}).length);
+    lineas.push("  partidos cargados: " +
+      (Array.isArray(j.eventos) ? j.eventos.length : "el script no los devuelve"));
+    if (!Array.isArray(j.eventos)){
+      lineas.push("");
+      lineas.push("→ El Apps Script está en la versión vieja.");
+      lineas.push("  Implementar > Gestionar implementaciones >");
+      lineas.push("  lápiz > Versión: Nueva versión.");
+    }
+  }catch(e){
+    lineas.push("LECTURA: falló");
+    lineas.push("  " + ((e && e.message) || e));
+  }
+
+  try{
+    const j = await pedir({ accion:"admin", clave: claveAdmin });
+    lineas.push("");
+    lineas.push("CLAVE EN EL SERVIDOR: " + (j.ok ? "coincide" : (j.mensaje || "no coincide")));
+  }catch(e){
+    lineas.push("");
+    lineas.push("CLAVE EN EL SERVIDOR: no se pudo probar");
+  }
+
+  caja.textContent = lineas.join("\n");
+  this.disabled = false;
+};
 
 async function borrarEvento(id){
   const ev = CONFIG.EVENTOS.find(x => x.id === id);

@@ -652,7 +652,7 @@ input:focus,select:focus{outline:0;border-color:var(--rojo);box-shadow:0 0 0 3px
   </div>
   <div class="caja">
     <label for="a-clave">Clave</label>
-    <input id="a-clave" type="password" autocomplete="off" placeholder="••••••••">
+    <input id="a-clave" type="password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="••••••••">
     <p class="error" id="a-error" style="display:none"></p>
     <button class="btn-ok" id="a-entrar">Ingresar</button>
   </div>
@@ -1336,7 +1336,9 @@ document.getElementById("a-entrar").onclick = async function(){
   try{
     const j = await pedir({ accion:"admin", clave:cl });
     if (!j.ok){
-      err.textContent = j.mensaje || "Clave incorrecta.";
+      err.textContent = (j.mensaje === "Acción desconocida.")
+        ? "El Apps Script está en la versión vieja: falta implementar versión nueva."
+        : (j.mensaje || "Clave incorrecta.");
       err.style.display = "block";
     } else {
       claveAdmin = cl;
